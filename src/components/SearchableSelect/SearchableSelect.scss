@@ -1,0 +1,220 @@
+// SearchableSelect Component Styles
+.searchable-select {
+  position: relative;
+  width: 100%;
+
+  &.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &.error {
+    .select-trigger {
+      border-color: var(--error-500);
+      box-shadow: 0 0 0 3px rgb(239 68 68 / 0.1);
+    }
+  }
+}
+
+.select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-lg);
+  background-color: white;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-height: 48px;
+
+  &:hover:not(.disabled) {
+    border-color: var(--gray-400);
+  }
+
+  &:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1);
+  }
+
+  &.open {
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1);
+  }
+
+  .select-value {
+    flex: 1;
+    text-align: left;
+    color: var(--gray-900);
+    font-size: var(--font-size-base);
+
+    &:empty::before {
+      content: attr(placeholder);
+      color: var(--gray-500);
+    }
+  }
+
+  .select-icons {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-left: var(--space-2);
+
+    .clear-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-1);
+      background: none;
+      border: none;
+      border-radius: var(--radius-sm);
+      color: var(--gray-400);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+
+      &:hover {
+        color: var(--gray-600);
+        background-color: var(--gray-100);
+      }
+    }
+
+    .chevron {
+      color: var(--gray-400);
+      transition: transform var(--transition-fast);
+
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.select-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  margin-top: var(--space-1);
+  background: white;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  animation: slideDown 0.15s ease-out;
+
+  .search-container {
+    position: relative;
+    padding: var(--space-3);
+    border-bottom: 1px solid var(--gray-200);
+
+    .search-icon {
+      position: absolute;
+      left: var(--space-6);
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray-400);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: var(--space-3) var(--space-4);
+      padding-left: var(--space-10);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-sm);
+      background-color: white;
+      transition: all var(--transition-fast);
+
+      &:focus {
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+        border-color: var(--primary-500);
+        box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1);
+      }
+
+      &::placeholder {
+        color: var(--gray-500);
+      }
+    }
+  }
+
+  .options-container {
+    max-height: 200px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--gray-100);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--gray-300);
+      border-radius: var(--radius-sm);
+
+      &:hover {
+        background: var(--gray-400);
+      }
+    }
+
+    .option {
+      padding: var(--space-3) var(--space-4);
+      cursor: pointer;
+      font-size: var(--font-size-base);
+      color: var(--gray-900);
+      transition: all var(--transition-fast);
+      border-bottom: 1px solid var(--gray-100);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: var(--gray-50);
+      }
+
+      &.highlighted {
+        background-color: var(--primary-50);
+        color: var(--primary-700);
+      }
+
+      &.selected {
+        background-color: var(--primary-100);
+        color: var(--primary-800);
+        font-weight: var(--font-weight-medium);
+
+        &::after {
+          content: '✓';
+          float: right;
+          color: var(--primary-600);
+        }
+      }
+    }
+
+    .empty-message {
+      padding: var(--space-6) var(--space-4);
+      text-align: center;
+      color: var(--gray-500);
+      font-size: var(--font-size-sm);
+      font-style: italic;
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

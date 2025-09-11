@@ -1,0 +1,50 @@
+/* ===========================================
+  Main SCSS Entry Point
+  Loads all styles in the correct order:
+  1. Tailwind Directives
+  2. Core Utilities (Variables, Mixins, Base)
+  3. Components
+  4. Overrides
+  =========================================== */
+
+// 1. Tailwind Directives
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// 2. Core Utilities
+@import './styles/variables';  // CSS variables and design tokens
+@import './styles/mixins';     // Reusable mixins and functions
+@import './styles/base';       // Global styles and resets
+@import './styles/utilities';  // Utility classes
+
+// 3. Component Styles
+// ------------------------------
+// Import component styles in alphabetical order
+// Note: Components should ideally use CSS Modules (.module.scss)
+@import './components/ImageUpload/ImageUpload';
+@import './components/LoadingSpinner/LoadingSpinner';
+@import './components/Login/Login';
+@import './components/Modal/Modal';
+@import './components/Navbar/Navbar';
+@import './components/ProtectedRoute/ProtectedRoute';
+@import './components/RichTextEditor/RichTextEditor';
+@import './components/SearchableSelect/SearchableSelect';
+
+// 4. Page Styles
+// ------------------------------
+// Page-specific styles (alphabetical order)
+@import './pages/CategoryList/CategoryList';
+@import './pages/Dashboard/Dashboard';
+@import './pages/ProductForm/ProductForm';
+@import './pages/ProductList/ProductList';
+
+// 5. Overrides (must come last)
+// ------------------------------
+// Third-party component overrides and global styles that need to win specificity battles
+@import './styles/overrides';
+
+// 6. Custom Utilities
+// ------------------------------
+// Any additional utility classes that need to override everything else
+// Note: Use these sparingly as they increase CSS specificity

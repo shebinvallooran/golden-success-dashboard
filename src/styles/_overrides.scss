@@ -1,0 +1,192 @@
+// Third-party component overrides
+
+// React Modal
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  
+  &--after-open { opacity: 1; }
+  &--before-close { opacity: 0; }
+}
+
+.ReactModal__Content {
+  transform: translateY(20px);
+  transition: transform var(--transition-normal), opacity var(--transition-normal);
+  opacity: 0;
+  
+  &--after-open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  &--before-close {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+// React Toastify
+.Toastify__toast {
+  border-radius: var(--radius-md) !important;
+  font-family: var(--font-family-sans) !important;
+  padding: var(--space-3) var(--space-4) !important;
+  
+  &--success {
+    background: var(--success-50) !important;
+    color: var(--success-800) !important;
+    border: 1px solid var(--success-200);
+  }
+  
+  &--error {
+    background: var(--error-50) !important;
+    color: var(--error-800) !important;
+    border: 1px solid var(--error-200);
+  }
+}
+
+// React Select
+.react-select {
+  &__control {
+    min-height: 42px !important;
+    border: 1px solid var(--gray-300) !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: none !important;
+    
+    &--is-focused {
+      border-color: var(--primary-500) !important;
+      box-shadow: 0 0 0 1px var(--primary-500) !important;
+    }
+  }
+  
+  &__menu {
+    border-radius: var(--radius-md) !important;
+    border: 1px solid var(--gray-200) !important;
+    box-shadow: var(--shadow-md) !important;
+  }
+}
+
+// React Table
+.ReactTable {
+  border: 1px solid var(--gray-200) !important;
+  border-radius: var(--radius-lg) !important;
+  
+  .rt-thead {
+    .rt-th {
+      font-size: var(--font-size-xs) !important;
+      font-weight: var(--font-weight-semibold) !important;
+      text-transform: uppercase !important;
+    }
+  }
+  
+  .rt-tbody {
+    .rt-tr:hover .rt-td {
+      background-color: var(--gray-50) !important;
+    }
+  }
+}
+
+// React Dropzone
+.dropzone {
+  border: 2px dashed var(--gray-300) !important;
+  border-radius: var(--radius-lg) !important;
+  background: white !important;
+  padding: var(--space-8) !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  transition: all var(--transition-normal) !important;
+  
+  &:hover {
+    border-color: var(--primary-400) !important;
+    background-color: var(--primary-50) !important;
+  }
+}
+
+// React Quill
+.ql-toolbar {
+  border-top-left-radius: var(--radius-md) !important;
+  border-top-right-radius: var(--radius-md) !important;
+  border-color: var(--gray-300) !important;
+}
+
+.ql-container {
+  border-bottom-left-radius: var(--radius-md) !important;
+  border-bottom-right-radius: var(--radius-md) !important;
+  border-color: var(--gray-300) !important;
+  font-family: var(--font-family-sans) !important;
+}
+
+// React Tabs
+.react-tabs {
+  &__tab {
+    padding: 8px 16px !important;
+    border: 1px solid transparent !important;
+    border-radius: var(--radius-md) var(--radius-md) 0 0 !important;
+    
+    &--selected {
+      background: white !important;
+      border-color: var(--gray-200) !important;
+      border-bottom-color: white !important;
+      color: var(--primary-600) !important;
+    }
+  }
+  
+  &__tab-panel {
+    padding: var(--space-4) 0 !important;
+  }
+}
+
+// React Tooltip
+.__react_component_tooltip {
+  padding: 6px 12px !important;
+  font-size: var(--font-size-xs) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-md) !important;
+  
+  &.type-dark {
+    background-color: var(--gray-900) !important;
+  }
+  
+  &.type-light {
+    background-color: white !important;
+    color: var(--gray-900) !important;
+    border: 1px solid var(--gray-200) !important;
+  }
+}
+
+// Responsive overrides
+@media (max-width: 640px) {
+  .react-datepicker {
+    &-popper {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    
+    &__month-container {
+      width: 100% !important;
+    }
+  }
+  
+  .ReactTable {
+    .rt-thead {
+      display: none !important;
+    }
+    
+    .rt-tbody .rt-tr {
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-3);
+      
+      .rt-td {
+        display: flex !important;
+        justify-content: space-between;
+        border: none !important;
+        
+        &::before {
+          content: attr(data-label);
+          font-weight: var(--font-weight-semibold);
+          margin-right: var(--space-3);
+        }
+      }
+    }
+  }
+}

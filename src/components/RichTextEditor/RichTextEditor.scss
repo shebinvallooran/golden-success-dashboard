@@ -1,0 +1,111 @@
+// RichTextEditor Component Styles
+.rich-text-editor {
+  .ql-editor {
+    min-height: 120px;
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+    color: var(--gray-900);
+
+    &:focus {
+      outline: none;
+    }
+
+    &.ql-blank::before {
+      color: var(--gray-500);
+      font-style: normal;
+    }
+  }
+
+  .ql-toolbar {
+    border-top: 1px solid var(--gray-300);
+    border-left: 1px solid var(--gray-300);
+    border-right: 1px solid var(--gray-300);
+    border-bottom: none;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    background-color: var(--gray-50);
+
+    &.ql-snow {
+      background-color: var(--gray-50);
+    }
+
+    .ql-picker-label {
+      color: var(--gray-700);
+    }
+
+    .ql-stroke {
+      stroke: var(--gray-600);
+    }
+
+    .ql-fill {
+      fill: var(--gray-600);
+    }
+
+    button:hover {
+      color: var(--primary-600);
+
+      .ql-stroke {
+        stroke: var(--primary-600);
+      }
+
+      .ql-fill {
+        fill: var(--primary-600);
+      }
+    }
+
+    button.ql-active {
+      color: var(--primary-600);
+
+      .ql-stroke {
+        stroke: var(--primary-600);
+      }
+
+      .ql-fill {
+        fill: var(--primary-600);
+      }
+    }
+  }
+
+  .ql-container {
+    border-left: 1px solid var(--gray-300);
+    border-right: 1px solid var(--gray-300);
+    border-bottom: 1px solid var(--gray-300);
+    border-top: none;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    background-color: white;
+
+    &.ql-snow {
+      border: 1px solid var(--gray-300);
+      border-top: none;
+    }
+  }
+
+  &.disabled {
+    .ql-toolbar {
+      background-color: var(--gray-100);
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .ql-container {
+      background-color: var(--gray-50);
+    }
+
+    .ql-editor {
+      color: var(--gray-500);
+      cursor: not-allowed;
+    }
+  }
+
+  // Focus state
+  &:focus-within {
+    .ql-toolbar {
+      border-color: var(--primary-500);
+    }
+
+    .ql-container {
+      border-color: var(--primary-500);
+      box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1);
+    }
+  }
+}
