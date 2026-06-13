@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { productAPI, categoryAPI } from '../../services/api';
 import LoadingSpinner from '../../components/LoadingSpinner';
-import SearchableSelect from '../../components/SearchableSelect';
+import SearchableSelect from '../../components/SearchableSelect/SearchableSelect';
 import Modal from '../../components/Modal';
 import toast from 'react-hot-toast';
 import { Plus, Search, Edit, Trash2, Eye, Filter } from 'lucide-react';
@@ -100,73 +100,81 @@ const ProductList = () => {
           </div>
         </div>
 
-        {/* Search and Filters */}
-        <div className="card card-compact">
-          <div className="filters-section">
-            <div className="search-section">
-              <div className="search-input-wrapper">
-                <Search size={20} className="search-icon" />
-                <input
-                  type="text"
-                  placeholder="Search products..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="form-input search-input"
-                />
-              </div>
-            </div>
+        {/* Search and Filters above the table card, aligned to the end */}
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'flex-end', 
+          alignItems: 'center', 
+          gap: 'var(--space-3)', 
+          marginBottom: 'var(--space-4)',
+          flexWrap: 'wrap'
+        }}>
+          {/* Clear Filters Button */}
+          {(searchTerm || categoryFilter || statusFilter) && (
+            <button
+              onClick={() => {
+                setSearchTerm('');
+                setCategoryFilter('');
+                setStatusFilter('');
+                setCurrentPage(1);
+              }}
+              className="btn btn-secondary btn-sm"
+              style={{ height: '40px', padding: '0 var(--space-4)' }}
+            >
+              Clear Filters
+            </button>
+          )}
 
-            <div className="filters-grid">
-              <div className="filter-group">
-                <label className="filter-label">
-                  <Filter size={16} />
-                  Category
-                </label>
-                <SearchableSelect
-                  options={[
-                    { value: '', label: 'All Categories' },
-                    ...categories.map(category => ({
-                      value: category.id,
-                      label: category.name
-                    }))
-                  ]}
-                  value={categoryFilter}
-                  onChange={setCategoryFilter}
-                  placeholder="Select category..."
-                  searchPlaceholder="Search categories..."
-                />
-              </div>
+          {/* Search Input */}
+          <div style={{ position: 'relative', width: '250px' }}>
+            <Search size={18} style={{ 
+              position: 'absolute', 
+              left: 'var(--space-3)', 
+              top: '50%', 
+              transform: 'translateY(-50%)', 
+              color: 'var(--gray-400)',
+              pointerEvents: 'none'
+            }} />
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="form-input"
+              style={{ paddingLeft: 'var(--space-10)', height: '40px' }}
+            />
+          </div>
 
-              <div className="filter-group">
-                <label className="filter-label">Status</label>
-                <SearchableSelect
-                  options={[
-                    { value: '', label: 'All Status' },
-                    { value: 'true', label: 'Active' },
-                    { value: 'false', label: 'Inactive' }
-                  ]}
-                  value={statusFilter}
-                  onChange={setStatusFilter}
-                  placeholder="Select status..."
-                />
-              </div>
+          {/* Category Filter Dropdown */}
+          <div style={{ width: '200px' }}>
+            <SearchableSelect
+              options={[
+                { value: '', label: 'All Categories' },
+                ...categories.map(category => ({
+                  value: category.id,
+                  label: category.name
+                }))
+              ]}
+              value={categoryFilter}
+              onChange={setCategoryFilter}
+              placeholder="All Categories"
+              searchPlaceholder="Search categories..."
+            />
+          </div>
 
-              {(searchTerm || categoryFilter || statusFilter) && (
-                <div className="filter-group">
-                  <button
-                    onClick={() => {
-                      setSearchTerm('');
-                      setCategoryFilter('');
-                      setStatusFilter('');
-                      setCurrentPage(1);
-                    }}
-                    className="btn btn-secondary btn-sm clear-filters-btn"
-                  >
-                    Clear Filters
-                  </button>
-                </div>
-              )}
-            </div>
+          {/* Status Filter Dropdown */}
+          <div style={{ width: '160px' }}>
+            <SearchableSelect
+              options={[
+                { value: '', label: 'All Status' },
+                { value: 'true', label: 'Active' },
+                { value: 'false', label: 'Inactive' }
+              ]}
+              value={statusFilter}
+              onChange={setStatusFilter}
+              placeholder="All Status"
+              searchable={false}
+            />
           </div>
         </div>
 

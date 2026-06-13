@@ -448,6 +448,42 @@ export const statisticsAPI = {
   }
 };
 
+// Quote/Enquiry API functions
+export const quoteAPI = {
+  // Get all enquiries
+  getQuotes: () => {
+    return api.get('/quotes');
+  },
+  // Update enquiry status
+  updateQuoteStatus: (id, status) => {
+    return api.put(`/quotes/${id}/status`, { status }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  },
+  // Delete enquiry
+  deleteQuote: (id) => {
+    return api.delete(`/quotes/${id}`);
+  }
+};
+
+// Settings API functions
+export const settingsAPI = {
+  // Get notification settings
+  getNotificationSettings: () => {
+    return api.get('/settings/notification');
+  },
+  // Update notification settings
+  updateNotificationSettings: (settingsData) => {
+    return api.put('/settings/notification', settingsData, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+};
+
 // Health check
 export const healthCheck = () => {
   return api.get('/health');

@@ -8,6 +8,8 @@ import Dashboard from './pages/Dashboard';
 import ProductList from './pages/ProductList';
 import ProductForm from './pages/ProductForm';
 import CategoryList from './pages/CategoryList';
+import EnquiryList from './pages/EnquiryList';
+import Settings from './pages/Settings';
 import './App.css';
 
 function App() {
@@ -53,6 +55,22 @@ function App() {
               <Navbar />
               <div className="container">
                 <CategoryList />
+              </div>
+            </ProtectedRoute>
+          } />
+          <Route path="/enquiries" element={
+            <ProtectedRoute>
+              <Navbar />
+              <div className="container">
+                <EnquiryList />
+              </div>
+            </ProtectedRoute>
+          } />
+          <Route path="/settings" element={
+            <ProtectedRoute>
+              <Navbar />
+              <div className="container">
+                <Settings />
               </div>
             </ProtectedRoute>
           } />

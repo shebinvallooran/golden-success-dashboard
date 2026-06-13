@@ -11,7 +11,8 @@ const SearchableSelect = ({
   disabled = false,
   error = false,
   className = "",
-  emptyMessage = "No options found"
+  emptyMessage = "No options found",
+  searchable = true
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -109,26 +110,27 @@ const SearchableSelect = ({
 
   return (
     <div 
-      className={`searchable-select ${className} ${error ? 'error' : ''} ${disabled ? 'disabled' : ''}`}
+      className={`searchable-select ${className} ${error ? 'searchable-select-error' : ''} ${disabled ? 'searchable-select-disabled' : ''}`}
       ref={dropdownRef}
     >
       <div
-        className={`select-trigger ${isOpen ? 'open' : ''}`}
+        className={`searchable-select-trigger ${isOpen ? 'searchable-select-trigger-open' : ''}`}
         onClick={toggleDropdown}
         onKeyDown={handleKeyDown}
         tabIndex={disabled ? -1 : 0}
         role="combobox"
         aria-expanded={isOpen}
         aria-haspopup="listbox"
+        style={{ paddingLeft: '16px', paddingRight: '16px' }}
       >
-        <span className="select-value">
+        <span className="searchable-select-value">
           {selectedOption ? selectedOption.label : placeholder}
         </span>
-        <div className="select-icons">
+        <div className="searchable-select-icons">
           {selectedOption && !disabled && (
             <button
               type="button"
-              className="clear-button"
+              className="searchable-select-clear"
               onClick={handleClear}
               tabIndex={-1}
             >
@@ -137,35 +139,38 @@ const SearchableSelect = ({
           )}
           <ChevronDown 
             size={20} 
-            className={`chevron ${isOpen ? 'open' : ''}`}
+            className={`searchable-select-chevron ${isOpen ? 'searchable-select-chevron-open' : ''}`}
           />
         </div>
       </div>
 
       {isOpen && (
-        <div className="select-dropdown">
-          <div className="search-container">
-            <Search size={16} className="search-icon" />
-            <input
-              ref={searchInputRef}
-              type="text"
-              className="search-input"
-              placeholder={searchPlaceholder}
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyDown={handleKeyDown}
-            />
-          </div>
+        <div className="searchable-select-dropdown">
+          {searchable && (
+            <div className="searchable-select-search">
+              <Search size={16} className="searchable-select-search-icon" />
+              <input
+                ref={searchInputRef}
+                type="text"
+                className="searchable-select-search-input"
+                placeholder={searchPlaceholder}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={handleKeyDown}
+                style={{ paddingLeft: '40px', height: '40px' }}
+              />
+            </div>
+          )}
           
-          <div className="options-container" role="listbox">
+          <div className="searchable-select-options" role="listbox">
             {filteredOptions.length > 0 ? (
               filteredOptions.map((option, index) => (
                 <div
                   key={option.value}
-                  className={`option ${
-                    option.value === value ? 'selected' : ''
+                  className={`searchable-select-option ${
+                    option.value === value ? 'searchable-select-option-selected' : ''
                   } ${
-                    index === highlightedIndex ? 'highlighted' : ''
+                    index === highlightedIndex ? 'searchable-select-option-highlighted' : ''
                   }`}
                   onClick={() => handleSelect(option)}
                   role="option"
@@ -175,7 +180,7 @@ const SearchableSelect = ({
                 </div>
               ))
             ) : (
-              <div className="empty-message">
+              <div className="searchable-select-empty">
                 {emptyMessage}
               </div>
             )}

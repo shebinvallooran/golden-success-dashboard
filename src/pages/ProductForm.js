@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { productAPI, categoryAPI } from '../services/api';
 import LoadingSpinner from '../components/LoadingSpinner';
 import RichTextEditor from '../components/RichTextEditor';
-import SearchableSelect from '../components/SearchableSelect';
+import SearchableSelect from '../components/SearchableSelect/SearchableSelect';
 import toast from 'react-hot-toast';
 import { ArrowLeft, Save, Globe, Image as ImageIcon } from 'lucide-react';
 import './ProductForm/ProductForm.scss';

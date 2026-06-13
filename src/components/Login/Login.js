@@ -43,11 +43,12 @@ const Login = () => {
         <div className="login-card">
           {/* Header */}
           <div className="login-header">
-            <div className="brand-logo">
-              <div className="logo-icon">
-                <Sparkles className="icon" />
-              </div>
-              <div className="logo-glow"></div>
+            <div className="brand-logo" style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>
+              <img 
+                src="/img/Golden Logo.png" 
+                alt="Golden Success Logo" 
+                style={{ height: '48px', width: 'auto', objectFit: 'contain' }} 
+              />
             </div>
             <div className="brand-info">
               <h1 className="brand-title">Golden Success</h1>

@@ -2,7 +2,7 @@ import React from 'react';
 import { X } from 'lucide-react';
 import './Modal.scss';
 
-const Modal = ({ isOpen, onClose, title, children }) => {
+const Modal = ({ isOpen, onClose, title, children, maxWidth = '600px' }) => {
   if (!isOpen) return null;
 
   const handleOverlayClick = (e) => {
@@ -13,7 +13,7 @@ const Modal = ({ isOpen, onClose, title, children }) => {
 
   return (
     <div className="modal-overlay" onClick={handleOverlayClick}>
-      <div className="modal-content">
+      <div className="modal-content" style={{ maxWidth }}>
         <div className="modal-header">
           <h2 className="modal-title">{title}</h2>
           <button className="close-button" onClick={onClose}>

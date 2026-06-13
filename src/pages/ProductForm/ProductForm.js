@@ -5,7 +5,7 @@ import { productAPI, categoryAPI } from '../../services/api';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import ImageUpload from '../../components/ImageUpload';
 import RichTextEditor from '../../components/RichTextEditor';
-import SearchableSelect from '../../components/SearchableSelect';
+import SearchableSelect from '../../components/SearchableSelect/SearchableSelect';
 import toast from 'react-hot-toast';
 import { ArrowLeft, Save, Globe } from 'lucide-react';
 import './ProductForm.scss';

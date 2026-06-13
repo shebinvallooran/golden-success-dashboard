@@ -84,12 +84,7 @@
     }
 
     .form-input {
-      padding: var(--space-3) var(--space-4);
-      border: 1px solid var(--gray-300);
-      border-radius: var(--radius-md);
-      font-size: var(--font-size-base);
       transition: all var(--transition-fast);
-      background: white;
 
       &:focus {
         outline: none;
@@ -255,12 +250,7 @@
 
       .form-input {
         width: 100%;
-        padding: 0.75rem 1rem;
-        border: 2px solid #e5e7eb;
-        border-radius: 8px;
-        font-size: 0.875rem;
         transition: all 0.2s ease;
-        background: #ffffff;
 
         &:focus {
           outline: none;
@@ -437,23 +427,6 @@
 // SearchableSelect Styling
 .product-form-page {
   .searchable-select {
-    .select-trigger {
-      border: 2px solid #e5e7eb;
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      transition: all 0.2s ease;
-
-      &:focus,
-      &.focused {
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-      }
-
-      &.error {
-        border-color: #ef4444;
-        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
-      }
-    }
   }
 }
 

@@ -181,11 +181,11 @@
 
       .form-input {
         width: 100%;
-        padding: var(--space-3) var(--space-4);
+        padding: var(#{"--space-2.5"}) var(--space-4);
         padding-left: var(--space-12);
         border: 1px solid var(--gray-200);
-        border-radius: var(--radius-xl);
-        font-size: var(--font-size-base);
+        border-radius: var(--radius-lg);
+        font-size: var(--font-size-sm);
         background: rgba(255, 255, 255, 0.5);
         backdrop-filter: blur(2px);
         color: var(--gray-900);

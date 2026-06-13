@@ -105,11 +105,11 @@ $breakpoint-2xl: 1536px;
 // Form Element Mixins
 @mixin form-input {
   width: 100%;
-  padding: var(--space-3) var(--space-4);
+  padding: var(#{"--space-2.5"}) var(--space-4);
   border: 1px solid var(--gray-300);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   font-family: var(--font-family-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   line-height: var(--line-height-normal);
   color: var(--gray-900);
   background-color: white;
@@ -160,7 +160,7 @@ $breakpoint-2xl: 1536px;
 }
 
 // Scrollbar Styling
-@mixin scrollbar($size: 8px, $track: var(--gray-100), $thumb: var(--gray-300)) {
+@mixin scrollbar($size: 4px, $track: var(--gray-100), $thumb: var(--gray-300)) {
   &::-webkit-scrollbar {
     width: $size;
     height: $size;

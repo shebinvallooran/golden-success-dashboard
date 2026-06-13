@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Package, FolderOpen, LogOut } from 'lucide-react';
+import { LayoutDashboard, Package, FolderOpen, LogOut, Mail, Settings } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 const Navbar = () => {
@@ -29,6 +29,16 @@ const Navbar = () => {
       path: '/categories',
       label: 'Categories',
       icon: FolderOpen
+    },
+    {
+      path: '/enquiries',
+      label: 'Enquiries',
+      icon: Mail
+    },
+    {
+      path: '/settings',
+      label: 'Settings',
+      icon: Settings
     }
   ];
 
@@ -37,14 +47,12 @@ const Navbar = () => {
       <div className="navbar-container">
         <div className="navbar-content">
           {/* Brand */}
-          <Link to="/" className="navbar-brand">
-            <div className="brand-icon">
-              <Package size={24} />
-            </div>
-            <div className="brand-text">
-              <span className="brand-name">Golden Success</span>
-              <span className="brand-subtitle">Product Management</span>
-            </div>
+          <Link to="/" className="navbar-brand" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <img 
+              src="/img/Golden Logo.png" 
+              alt="Golden Success Logo" 
+              style={{ height: '36px', width: 'auto', objectFit: 'contain' }} 
+            />
           </Link>
 
           {/* Navigation Links */}
